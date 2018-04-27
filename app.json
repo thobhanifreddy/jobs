@@ -17,11 +17,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.jobs.jobs"
+    },
+    "android": {
+      "package": "com.jobs.jobs",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyDe2RhXn1ovkeNkee-z7_h4FReTYN-ZpLs" }
+      }
     }
   }
 }
