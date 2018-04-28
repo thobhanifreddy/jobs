@@ -1,5 +1,10 @@
 import React from "react";
-import { TabNavigator, StackNavigator } from "react-navigation";
+import {
+  TabNavigator,
+  StackNavigator,
+  TabView,
+  TabBarBottom
+} from "react-navigation";
 
 import AuthScreen from "../screens/AuthScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
@@ -13,23 +18,34 @@ const MainNavigator = TabNavigator(
     welcome: { screen: WelcomeScreen },
     auth: { screen: AuthScreen },
     main: {
-      screen: TabNavigator({
-        map: { screen: MapScreen },
-        deck: { screen: DeckScreen },
-        review: {
-          screen: StackNavigator({
-            review: { screen: ReviewScreen },
-            settings: { screen: SettingScreen }
-          })
+      screen: TabNavigator(
+        {
+          map: { screen: MapScreen },
+          deck: { screen: DeckScreen },
+          review: {
+            screen: StackNavigator({
+              review: { screen: ReviewScreen },
+              settings: { screen: SettingScreen }
+            })
+          }
+        },
+        {
+          swipeEnabled: false,
+          tabBarPosition: "bottom",
+          tabBarOptions: {
+            labelStyle: { fontSize: 12, margin: 0 },
+            showIcon: true
+          }
         }
-      })
+      )
     }
   },
   {
     navigationOptions: {
       tabBarVisible: false
     },
-    lazy: true
+    lazyLoad: true
   }
 );
+
 export default MainNavigator;

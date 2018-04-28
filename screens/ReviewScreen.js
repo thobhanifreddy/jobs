@@ -17,6 +17,9 @@ class ReviewScreen extends Component {
           color="rgba(0,0,0,1)"
         />
       ),
+      tabBarIcon: ({ tintColor }) => {
+        return <Icon name="favorite" size={30} color={tintColor} />;
+      },
       style: {
         marginTop: Platform.OS === "android" ? 24 : 0
       }
@@ -49,7 +52,7 @@ class ReviewScreen extends Component {
             <Button
               title="Apply Now!"
               backgroundColor="#03A9F4"
-              onPress={() => Linking.openURL(url)}
+              onPress={() => Linking.openURL(job.url)}
             />
           </View>
         </Card>
@@ -58,7 +61,11 @@ class ReviewScreen extends Component {
   }
 
   render() {
-    return <ScrollView>{this.renderLikedJobs()}</ScrollView>;
+    return (
+      <ScrollView style={{ marginTop: 15 }}>
+        {this.renderLikedJobs()}
+      </ScrollView>
+    );
   }
 }
 
